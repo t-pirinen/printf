@@ -2,6 +2,10 @@ NAME_1 = libftprintf.a
 
 NAME_2 = libft.a
 
+HEADER_1 = ft_printf.h
+
+HEADER_2 = libft.h
+
 LIBFT_PATH = ./libft
 
 COMP = cc -Wall -Wextra -Werror
@@ -61,15 +65,15 @@ SRCS = ft_printf.c
 
 OBJS = $(SRCS:.c=.o)
 
-.c.o:
+%.o: %.c $(HEADER_1)
 	@$(COMP) -c $< -o $@
 
 all: $(NAME_1)
 
-$(NAME_1): $(OBJS) $(LIBFT_PATH)/$(NAME_2)
+$(NAME_1): $(OBJS) $(LIBFT_PATH)/$(NAME_2) ft_printf.h
 	@ar rcs $(NAME_1) $(OBJS) $(addprefix $(LIBFT_PATH)/, $(LIBFT_OBJS))
 
-$(LIBFT_PATH)/$(NAME_2): $(addprefix $(LIBFT_PATH)/, $(LIBFT_OBJS))
+$(LIBFT_PATH)/$(NAME_2): $(addprefix $(LIBFT_PATH)/, $(LIBFT_OBJS)) $(LIBFT_PATH)/$(HEADER_2)
 	@$(MAKE) -C $(LIBFT_PATH) all --no-print-directory
 
 clean:
