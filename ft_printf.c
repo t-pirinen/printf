@@ -6,11 +6,11 @@
 /*   By: tpirinen <tpirinen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 16:45:33 by tpirinen          #+#    #+#             */
-/*   Updated: 2025/05/20 17:55:54 by tpirinen         ###   ########.fr       */
+/*   Updated: 2025/05/20 18:15:34 by tpirinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//	printf("ab%ccd%sef", a, b)
+//	printf("ab%ccd%sef", 'a', b)
 
 #include "ft_printf.h"
 
@@ -21,7 +21,7 @@ int	ft_printf(const char *s, ...)
 {
 	va_list	args;
 	ssize_t	err;
-	
+
 	err = 0;
 	va_start(args, s);
 	err = ft_loop_s(args, s, err);
@@ -33,7 +33,7 @@ static ssize_t	ft_loop_s(va_list args, const char *s, ssize_t err)
 {
 	ssize_t	chars_printed;
 	int		i;
-	
+
 	i = 0;
 	chars_printed = 0;
 	while (s[i])
@@ -63,7 +63,7 @@ static ssize_t	ft_parse_args(char specifier, va_list args)
 
 	fd = 1;
 	if (specifier == 'c')
-		return (ft_putchar_fd_ret(va_arg(args, int), fd));
+		return (ft_putchar_fd_ret((char)va_arg(args, int), fd));
 	else if (specifier == 's')
 		return (ft_putstr_fd_ret(va_arg(args, char *), fd));
 	else if (specifier == 'p')
