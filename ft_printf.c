@@ -6,9 +6,11 @@
 /*   By: tpirinen <tpirinen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 16:45:33 by tpirinen          #+#    #+#             */
-/*   Updated: 2025/05/17 05:54:24 by tpirinen         ###   ########.fr       */
+/*   Updated: 2025/05/20 17:55:54 by tpirinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+//	printf("ab%ccd%sef", a, b)
 
 #include "ft_printf.h"
 
