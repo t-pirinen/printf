@@ -6,11 +6,9 @@
 /*   By: tpirinen <tpirinen@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 16:45:33 by tpirinen          #+#    #+#             */
-/*   Updated: 2025/05/20 18:15:34 by tpirinen         ###   ########.fr       */
+/*   Updated: 2025/05/31 17:22:09 by tpirinen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-//	printf("ab%ccd%sef", 'a', b)
 
 #include "ft_printf.h"
 
@@ -22,6 +20,8 @@ int	ft_printf(const char *s, ...)
 	va_list	args;
 	ssize_t	err;
 
+	if (!s)
+		return (-1);
 	err = 0;
 	va_start(args, s);
 	err = ft_loop_s(args, s, err);
@@ -78,5 +78,5 @@ static ssize_t	ft_parse_args(char specifier, va_list args)
 		return (ft_puthex_up_fd(va_arg(args, unsigned int), fd));
 	else if (specifier == '%')
 		return (ft_putchar_fd_ret('%', fd));
-	return (0);
+	return (-1);
 }
