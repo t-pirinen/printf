@@ -10,7 +10,7 @@
 #include <string.h>
 #include <unistd.h>
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 // ANSI escape codes.
 #define ANSI_GREEN  "\e[1;32m" // Set the text color to green.
