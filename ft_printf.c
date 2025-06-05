@@ -26,7 +26,7 @@ int	ft_printf(const char *s, ...)
 	va_start(args, s);
 	chars_printed = ft_loop_s(args, s, chars_printed);
 	va_end(args);
-	return (chars_printed);
+	return ((int)chars_printed);
 }
 
 static ssize_t	ft_loop_s(va_list args, const char *s, ssize_t chars_printed)
