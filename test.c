@@ -1,3 +1,5 @@
+// Thanks to github.com/datagore for the test.
+
 // clang emits a warning if you try to print a NULL string. That warning is
 // disabled here, so that we can test with NULL strings.
 #ifndef __clang__
