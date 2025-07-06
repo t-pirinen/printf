@@ -1,39 +1,37 @@
-NAME_1 = libftprintf.a
+NAME = libftprintf.a
 
-NAME_2 = libft/libft.a
+LIBFT = libft/libft.a
 
-HEADER_1 = libftprintf.h
-
-HEADER_2 = libft/libft.h
+PRINTF_HEADER = libftprintf.h
 
 LIBFT_PATH = libft/
 
-COMP = cc -Wall -Wextra -Werror
+CC = cc -Wall -Wextra -Werror
 
 SRC = ft_printf.c
 
 OBJ = $(SRC:.c=.o)
 
-%.o: %.c $(HEADER_1)
-	@$(COMP) -c $< -o $@
+%.o: %.c $(PRINTF_HEADER)
+	@$(CC) -c $< -o $@
 
-all: $(NAME_1)
+all: $(NAME)
 
-$(NAME_1): $(NAME_2) $(OBJ)
+$(NAME): $(LIBFT) $(OBJ)
 	@cp $< $@
 	@ar rcs $@ $(OBJ)
-	@echo "libftprintf.a created"
+	@echo "PRINTF: libftprintf.a created"
 
-$(NAME_2):
-	@$(MAKE) -C $(LIBFT_PATH) all --no-print-directory
+$(LIBFT):
+	@make -s -C $(LIBFT_PATH) all
 
 clean:
 	@rm -rf $(OBJ)
-	@$(MAKE) -C $(LIBFT_PATH) clean --no-print-directory
+	@make -s -C $(LIBFT_PATH) clean
 
 fclean: clean
-	@rm -rf $(NAME_1)
-	@rm -rf $(NAME_2)
+	@rm -rf $(NAME)
+	@rm -rf $(LIBFT)
 
 re: fclean all
 
